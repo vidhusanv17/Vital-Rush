@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('path/to/your/background-image.jpg'); /* Add a background image */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #333; /* Default text color */
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: white;
+    padding: 20px 0;
+    text-align: center; 
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 2.5em; /* Adjusted font size */
+}
+
+.home {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 120px 20px; /* Added horizontal padding */
+}
+
+.home-content {
+    flex: 1; 
+    text-align: center; 
+}
+
+.home-content h1 {
+    font-size: 4.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+    font-size: 1.5em;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.home-box {
+    flex: 1; 
+    display: flex;
+    justify-content: center; 
+}
+
+.box {
+    background-color: #e9ecef; 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    text-align: center; 
+}
+
+.box h2 {
+    margin: 0;
+    font-size: 3.5em;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #28a745; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+    margin-top: 10px; 
+    font-size: 1.3em;
+}
+
+.explore-btn:hover {
+    background-color: #218838; 
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#about {
+    background-color: #222; /* Darker background for contrast */
+    font-weight: 200;
+    padding: 40px 20px; /* Increased padding */
+}
+
+#about .col {
+    color: white;
+}
+
+section {
+    width: 100%;
+    min-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Added padding for sections */
+}
+
+.footer {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent footer */
+    color: white;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column; /* Stack elements on smaller screens */
+        padding: 60px 10px; /* Adjust padding */
+    }
+
+    .home-content h1 {
+        font-size: 3em; /* Smaller font size for mobile */
+    }
+
+    .btn, .explore-btn {
+        font-size: 1.2em; /* Smaller buttons for mobile */
+        padding: 8px 16px; /* Adjust padding */
+    }
+
+    .box {
+        width: 90%; /* Make the box responsive */
+    }
+}
