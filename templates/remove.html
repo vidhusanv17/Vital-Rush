@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Removal Request Form</title>
+    <style>
+        /* Basic CSS Styling */
+        body {
+            font-family: sans-serif;
+            margin: 80px;
+            background: linear-gradient(135deg, #07518a, #750575);
+        }
+        .form-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: white;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        textarea {
+            height: 50px;
+        }
+        button {
+            background-color: #062d53;
+            color: white;                                                                                           
+            padding: 20px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 15PX;
+
+
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+        .rev{
+            color: #ffffff;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <h1 class="rev">Ambulance Removal Request Form</h1>
+
+    <form id="removalForm">
+
+        <div class="form-section">
+            <h2>Ambulance Information</h2>
+            
+            <label for="ambulanceId">Ambulance ID:</label>
+            <input type="text" id="ambulanceId" name="ambulanceId" required>
+            <p id="ambulanceIdError" class="error"></p>
+
+            <label for="removalReason">Reason for Removal:</label>
+            <textarea id="removalReason" name="removalReason" required></textarea>
+            <p id="removalReasonError" class="error"></p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <button type="submit">Submit Request</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+    <script>
+        // --- Basic Form Validation (JavaScript) ---
+        document.getElementById("removalForm").addEventListener("submit", function(event) {
+            let isValid = true;
+
+            // --- Reset error messages ---
+            document.querySelectorAll(".error").forEach(error => error.textContent = "");
+
+            // --- Validation functions ---
+            function validateRequired(inputId, errorId) {
+                const input = document.getElementById(inputId);
+                if (!input.value.trim()) {
+                    document.getElementById(errorId).textContent = `${inputId.replace(/([A-Z])/g, ' $1')} is required.`;
+                    return false;
+                }
+                return true;
+            }
+
+            // --- Perform validation ---
+            isValid = isValid && validateRequired("requesterName", "requesterNameError");
+            isValid = isValid && validateRequired("requesterEmail", "requesterEmailError");
+            isValid = isValid && validateRequired("requesterPhone", "requesterPhoneError");
+            isValid = isValid && validateRequired("ambulanceId", "ambulanceIdError");
+            isValid = isValid && validateRequired("removalReason", "removalReasonError");
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission
+            }
+ }
+        });
+    </script>
+   
+
+</body>
+</html>

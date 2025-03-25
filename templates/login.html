@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Login Form Design</title>
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667fec, #ad4cda);
+        }
+        .vital-rush-header{
+            font-family: Arial, Helvetica, sans-serif;
+              font-size: 36px; /* Adjust the size as needed */
+              font-weight: bold;
+              color: #a084e0; /* Color for the header */
+              text-align: center;
+              margin-bottom: 20px; /* Space between header and form */
+          }
+
+        .wrapper {
+    max-width: 400px;
+    background: #051247;
+    padding: 25px 35px;
+    border: 5px solid #4ec5f5;
+    border-radius: 40px;
+    box-shadow: 0 30px 30px -20px rgba(0, 0, 0, 0.3);
+        }
+
+        .heading {
+            font-size: 30px;
+            font-weight: 900;
+            color: #1089d3;
+            text-align: center;
+        }
+
+        .form {
+            margin-top: 20px;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 15px 20px;
+            background: #fff;
+            outline: none;
+            border: none;
+            border-inline: 2px solid transparent;
+            border-radius: 25px;
+            margin-top: 15px;
+            box-shadow: 0 10px 10px -5px #cff0ff;
+            transition: 0.3s;
+        }
+
+        .form input:focus {
+            border-color: red;
+        }
+
+        .form input::placeholder {
+            color: #aaa;
+        }
+
+        .form .pass {
+            display: block;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .wrapper a {
+            color: #1089d3;
+        }
+
+        .form input.btn {
+            background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+            color: #fff;
+            margin: 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 20px 10px -15px #1089d366;
+            border-radius: 25px;
+        }
+
+        .form input.btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 23px 10px -20px #1089d366;
+        }
+
+        .form input.btn:active {
+            transform: scale(0.95);
+        }
+
+        .social-accounts {
+            margin-top: 20px;
+        }
+
+        .social-accounts .title {
+            display: block;
+            text-align: center;
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .social-icons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            background: linear-gradient(45deg, #111 0%, #555 100%);
+            box-shadow: 0 12px 10px -8px #1089d377;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .social-btn:active {
+            transform: scale(0.95);
+        }
+
+        .wrapper .aggr {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+        }
+
+        .error-message {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+            color: red;
+        }
+
+        .success-message {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+            color: green; /* Success message color */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+      <div class="vital-rush-header">Vital Rush</div> <!-- Added header -->
+        <div class="heading">Sign In</div>
+        <form id="loginForm" class="form" onsubmit="return validateLogin(event)">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <span class="pass"><a href="#">Forgot Password?</a></span>
+            <input type="submit" value="Sign In" class="btn">
+            <div id="error-message" class="error-message"></div> <!-- Error message display -->
+            <div id="success-message" class="success-message"></div> <!-- Success message display -->
+        </form>
+        
+        
+        
+    </div>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the values from the input fields
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the email and password match the expected values
+            if (email === 'sample@gmail.com' && password === 'pass@123') {
+                // Show success message
+                const successMessage = document.getElementById('success-message');
+                successMessage.innerText = 'Login successful! Redirecting...';
+                // Wait for 2 seconds before redirecting
+                setTimeout(() => {
+                    window.location.href = 'D:/Projects/ambulance/templates/dash.html'; // Use forward slashes
+                }, 2000);
+            } else {
+                // Show an error message
+                document.getElementById('error-message').innerText = 'Invalid email or password. Please try again.';
+                document.getElementById('success-message').innerText = ''; // Clear success message
+            }
+        }
+    </script>
+    
+</body>
+</html>

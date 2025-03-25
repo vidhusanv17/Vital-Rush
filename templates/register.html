@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration Form</title>
+    <style>
+        /* Basic CSS Styling (You can customize this) */
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #07518a, #750575);
+        }
+        .form-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #ccc;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            background-color: white;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        textarea {
+            height: 80px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 18px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius:10PX;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+        .veh{
+            color: rgb(255, 255, 255);
+        }
+        
+footer {
+    position: relative; /* Ensure it stays at the bottom */
+    bottom: 0;
+}
+    </style>
+</head>
+<body>
+
+    <h1 class="veh">Vehicle Registration Form</h1>
+
+    <form id="registrationForm">
+        <div class="form-section">
+            <h2 class="veh">User Information</h2>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+            <p id="fullNameError" class="error"></p>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+            <p id="emailError" class="error"></p>
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="tel" id="contactNumber" name="contactNumber" required>
+            <p id="contactNumberError" class="error"></p>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            <p id="addressError" class="error"></p>
+        </div>
+
+        <div class="form-section">
+            <h2>Vehicle Information</h2>
+            <label for="vin">Vehicle Identification Number (VIN):</label>
+            <input type="text" id="vin" name="vin" required>
+            <p id="vinError" class="error"></p>
+
+            <label for="registrationNumber">Vehicle Registration Number:</label>
+            <input type="text" id="registrationNumber" name="registrationNumber" required>
+            <p id="registrationNumberError" class="error"></p>
+
+            <label for="make">Vehicle Make:</label>
+            <input type="text" id="make" name="make">
+
+            <label for="model">Vehicle Model:</label>
+            <input type="text" id="model" name="model">
+
+            <label for="year">Vehicle Year:</label>
+            <input type="number" id="year" name="year" min="1900" max="2050">
+
+            
+            
+
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color">
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <script>
+        // --- Basic Form Validation (JavaScript) ---
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            let isValid = true;
+
+            // --- Reset error messages ---
+            document.querySelectorAll(".error").forEach(error => error.textContent = "");
+
+            // --- Validation functions ---
+            function validateRequired(inputId, errorId) {
+                const input = document.getElementById(inputId);
+                if (!input.value.trim()) {
+                    document.getElementById(errorId).textContent = `${inputId.replace(/([A-Z])/g, ' $1')} is required.`;
+                    return false;
+                }
+                return true;
+            }
+
+            function validateEmail(inputId, errorId) {
+                const input = document.getElementById(inputId);
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(input.value)) {
+                    document.getElementById(errorId).textContent = "Invalid email format.";
+                    return false;
+                }
+                return true;
+            }
+
+            // --- Perform validation ---
+            isValid = isValid && validateRequired("fullName", "fullNameError");
+            isValid = isValid && validateEmail("email", "emailError");
+            isValid = isValid && validateRequired("contactNumber", "contactNumberError");
+            isValid = isValid && validateRequired("address", "addressError");
+            isValid = isValid && validateRequired("vin", "vinError");
+            isValid = isValid && validateRequired("registrationNumber", "registrationNumberError");
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+   
+</body>
+</html>
